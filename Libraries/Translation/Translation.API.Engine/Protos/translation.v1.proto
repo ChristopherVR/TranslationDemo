@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GrpcTranslation.V1";
+
+package grpctranslation.v1;
+
+service Translations {
+  rpc CreateTranslation (CreateTranslationRequest) returns (google.protobuf.Empty);
+
+  rpc UpdateTranslation (UpdateTranslationRequest) returns (google.protobuf.Empty);
+
+  rpc DeleteTranslation (DeleteTranslationRequest) returns (google.protobuf.Empty);
+
+  rpc ListTranslations (ListTranslationsRequest) returns (ListTranslationsResponse);
+
+  rpc GetTranslation (GetTranslationRequest) returns (Translation);
+}
+
+message CreateTranslationRequest {
+  string table_name = 1;
+  string field_name = 2;
+  string value = 3;
+  int64 record_id = 4;
+  string culture = 5;
+}
+
+message UpdateTranslationRequest {
+  string table_name = 1;
+  string field_name = 2;
+  string value = 3;
+  int64 record_id = 4;
+  string culture = 5;
+}
+
+message DeleteTranslationRequest {
+  string table_name = 1;
+  string field_name = 2;
+  int64 record_id = 3;
+  string culture = 4;
+}
+
+message ListTranslationsRequest {
+  string table_name = 1;
+  string field_name = 2;
+}
+
+message ListTranslationsResponse {
+  repeated ExtendedTranslation translations = 1;
+}
+
+message GetTranslationRequest {
+  string table_name = 1;
+  string field_name = 2;
+  int64 record_id = 3;
+  google.protobuf.StringValue culture = 4;
+}
+
+
+message Translation {
+  google.protobuf.StringValue value = 1;
+  string culture = 2;
+}
+
+message ExtendedTranslation {
+  google.protobuf.StringValue value = 1;
+  string culture = 2;
+  string field_name = 3;
+  string table_name = 4;
+}
