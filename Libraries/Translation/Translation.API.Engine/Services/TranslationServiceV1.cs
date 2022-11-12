@@ -1,14 +1,12 @@
 ﻿using AuthenticationService.Interfaces;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using GrpcTranslation.V1;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
-using System.Security.Claims;
 using Translation.API.Engine.Application.Commands;
 using Translation.API.Engine.Application.Queries;
-using GrpcTranslation.V1;
-
 
 namespace Translation.API.Engine.Services;
 [Authorize]
@@ -22,12 +20,12 @@ public sealed class TranslationServiceV1 : GrpcTranslation.V1.Translations.Trans
     public TranslationServiceV1(
         ILogger<TranslationServiceV1> logger,
         IMediator mediator,
-        ITranslationQueries movieQueries,
+        ITranslationQueries translationQueries,
         IUserService userService)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        _translationsQueries = movieQueries ?? throw new ArgumentNullException(nameof(movieQueries));
+        _translationsQueries = translationQueries ?? throw new ArgumentNullException(nameof(translationQueries));
         _userService = userService ?? throw new ArgumentNullException(nameof(userService));
     }
 
@@ -85,7 +83,7 @@ public sealed class TranslationServiceV1 : GrpcTranslation.V1.Translations.Trans
 
         return new()
         {
-            Translations = 
+            Translations =
             {
                 translations.Select(y => new GrpcTranslation.V1.ExtendedTranslation
                 {
@@ -102,9 +100,9 @@ public sealed class TranslationServiceV1 : GrpcTranslation.V1.Translations.Trans
     {
         TranslationPreview? translation = await _translationsQueries.GetAsync(
             request.RecordId,
-            request.TableName, 
-            request.FieldName, 
-            request.Culture, 
+            request.TableName,
+            request.FieldName,
+            request.Culture,
             context.CancellationToken);
 
         if (translation is null)

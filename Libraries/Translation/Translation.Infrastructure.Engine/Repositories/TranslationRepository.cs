@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace MasterDataEngine.Repositories;
+namespace Translation.Infrastructure.Repositories;
 internal class TranslationRepository<T> : ITranslationRepository where T : DbContext
 {
     private readonly ILogger<TranslationRepository<T>> _logger;

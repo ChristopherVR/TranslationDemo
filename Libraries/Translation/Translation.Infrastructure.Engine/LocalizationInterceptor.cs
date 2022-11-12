@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System.Reflection;
 using Translation.Domain.Engine.SeedWork;
 using Translation.Infrastructure.Engine.Annotations;
 using Translation.Infrastructure.Engine.Options;
@@ -39,23 +38,25 @@ internal sealed class LocalizationInterceptor : IMaterializationInterceptor
             entity.FallbackCulture = fallbackCulture;
             entity.UserCulture = userCulture;
 
-            foreach(var property in materializationData.EntityType
+            foreach (Microsoft.EntityFrameworkCore.Metadata.IProperty? property in materializationData.EntityType
                 .GetProperties()
                 .Where(y => y.FindAnnotation(nameof(LocalizedAttribute)) is not null))
             {
-                var shadowData = materializationData.EntityType.FindProperty($"{property.Name}_Data");
-
-                if (shadowData is null)
+                if (property.GetAnnotation(nameof(LocalizedAttribute)).Value is not LocalizedAttribute attribute)
                 {
-                    logger.LogWarning("Unable to find shadow data for this property.");
+                    logger.LogWarning("Unable to find attribute for the shadow property.");
                 }
                 else
                 {
-                    var data = actualType.GetProperty(shadowData.Name)!.GetValue(entity) as IList<LocalizedField>;
-
-                    foreach(var record in data!)
+                    var data = actualType.GetProperty(property.Name)!.GetValue(entity) as IList<LocalizedString>;
+                    foreach (LocalizedString record in data!)
                     {
-                        entity._fields.Add(record);
+                        // entity._fields.Add(new()
+                        // {
+                        //     Culture = record.Culture,
+                        //     Field = property.Name,
+                        //     Value = record.Value,
+                        // });
                     }
                     actualType.GetProperty(property.Name)!.SetValue(entity, entity.GetValue(property.Name, useFallback: true));
                 }

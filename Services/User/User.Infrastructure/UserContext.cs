@@ -11,6 +11,8 @@ public class UserContext : DbContext, IUnitOfWork
 
     public required DbSet<Domain.AggregatesModel.UserAggregate.User> Users { get; set; }
 
+    public required DbSet<Domain.AggregatesModel.UserAggregate.Disability> Disabilities { get; set; }
+
     private readonly IMediator _mediator;
 
     public UserContext(DbContextOptions<UserContext> options, IMediator mediator) : base(options) =>

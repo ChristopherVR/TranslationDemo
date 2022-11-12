@@ -17,7 +17,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 if (builder.Environment.IsDevelopment())
 {
     IdentityModelEventSource.ShowPII = true;
-    // .builder.Services.AddGrpcReflection();
+    builder.Services.AddGrpcReflection();
 }
 
 builder.Services.AddGrpc();

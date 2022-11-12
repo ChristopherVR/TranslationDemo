@@ -2,7 +2,7 @@
 
 [assembly: InternalsVisibleTo("Translation.UnitTests")]
 [assembly: InternalsVisibleTo("Translation.API.Engine")]
-namespace MasterDataEngine.Repositories;
+namespace Translation.Infrastructure.Repositories;
 internal interface ITranslationRepository
 {
     Task DeleteTranslationAsync(string username, string tableName, long recordId, string culture, CancellationToken cancellationToken = default);

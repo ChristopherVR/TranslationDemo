@@ -1,7 +1,7 @@
 ﻿namespace Translation.Infrastructure.Engine.Annotations;
 
 [AttributeUsage(AttributeTargets.Property)]
-internal class LocalizedAttribute : Attribute   
+public class LocalizedAttribute : Attribute
 {
-
+    public required string PropertyName { get; set; }
 }

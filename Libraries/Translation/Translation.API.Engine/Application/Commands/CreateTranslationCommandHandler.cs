@@ -1,6 +1,6 @@
-﻿using MasterDataEngine.Repositories;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Translation.Infrastructure.Repositories;
 
 namespace Translation.API.Engine.Application.Commands;
 internal sealed class CreateTranslationCommandHandler : IRequestHandler<CreateTranslationCommand, Unit>

@@ -26,10 +26,31 @@ public abstract class LocalizedEntity : Entity
     /// </summary>
     internal readonly IList<LocalizedField> _fields = new List<LocalizedField>();
 
-    public LocalizedEntity()
-    {
-        AddDomainEvent(new TranslationCreatedDomainEvent(this));
-    }
+    public LocalizedEntity() => AddDomainEvent(new TranslationCreatedDomainEvent(this));
+
+    /// <summary>
+    /// Maps the given value and culture to a JSON string.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="culture"></param>
+    /// <returns></returns>
+    public static string MapRawData(string value, string culture)
+        => System.Text.Json.JsonSerializer.Serialize(new List<object>
+        {
+            new
+            {
+                Value = value,
+                Culture = value,
+            },
+        });
+
+    /// <summary>
+    /// Maps the given value and culture to a JSON string.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="culture"></param>
+    /// <returns></returns>
+    public static string MapRawData(IList<(string Value, string Culture)> data) => System.Text.Json.JsonSerializer.Serialize(data);
 
     public string? GetValue(Func<LocalizedEntity, IComparable> property, string? culture = default, bool useFallback = true)
         => GetValue(property(this)?.ToString() ?? throw new ArgumentNullException(nameof(property)), culture, useFallback);
@@ -68,7 +89,7 @@ public abstract class LocalizedEntity : Entity
     /// <returns></returns>
     public bool ValidUniqueValue(string property, string? value, bool ignoreNulls = false)
     {
-        var values = _fields?.Where(y => y.Field == property && (!ignoreNulls || y.Value is not null))?.Select(y => y.Value);
+        IEnumerable<string?>? values = _fields?.Where(y => y.Field == property && (!ignoreNulls || y.Value is not null))?.Select(y => y.Value);
 
         if (!values?.Any() ?? false)
         {

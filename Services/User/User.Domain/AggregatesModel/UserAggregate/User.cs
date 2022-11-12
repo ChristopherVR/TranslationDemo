@@ -9,6 +9,9 @@ public class User : Entity, IAggregateRoot
     public string Username { get; private set; }
     public int SiteId { get; private set; }
 
+    private readonly List<UserDisability> _userDisabilities = new();
+    public IReadOnlyCollection<UserDisability> UserDisabilities => _userDisabilities;
+
     /// <summary>
     ///  Default EF constructor
     /// </summary>
@@ -35,6 +38,6 @@ public class User : Entity, IAggregateRoot
 
     public static List<User> InitialSeedData() => new()
     {
-        new("ChristopherVR", "en-US", 1, "Migrations"),
+        new("ChristopherVR", "en-US", 1, "Migrations") { Id = 1 },
     };
 }
