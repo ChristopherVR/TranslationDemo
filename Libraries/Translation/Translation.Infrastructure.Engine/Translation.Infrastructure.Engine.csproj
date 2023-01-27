@@ -15,12 +15,12 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-rc.1.22426.7" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0-rc.1.22426.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\AuthenticationService\AuthenticationService.csproj" />
-		<ProjectReference Include="..\..\..\Translation.Common\Translation.Common.csproj" />
+		<ProjectReference Include="..\..\..\Services\Authentication\Authentication.csproj" />
+    <ProjectReference Include="..\Translation.Common\Translation.Common.csproj" />
 		<ProjectReference Include="..\Translation.Domain.Engine\Translation.Domain.Engine.csproj" />
 
 	</ItemGroup>

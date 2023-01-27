@@ -27,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Extensions", "Libraries
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Extensions", "Libraries\Common\Domain.Extensions\Domain.Extensions.csproj", "{EF1ECAA5-FB1D-4D87-A140-CEFAC50A3D3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{8ED2401A-F83F-4A4B-AB96-072462F09C7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "Services\Authentication\Authentication.csproj", "{8ED2401A-F83F-4A4B-AB96-072462F09C7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translation.Common", "Translation.Common\Translation.Common.csproj", "{E352DDB0-5BAD-4295-80F9-CF360720459F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translation.Common", "Libraries\Translation\Translation.Common\Translation.Common.csproj", "{E352DDB0-5BAD-4295-80F9-CF360720459F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Extensions", "Libraries\Common\Infrastructure.Extensions\Infrastructure.Extensions.csproj", "{43D9E106-0554-4254-AB31-2D06CFA160D6}"
 EndProject

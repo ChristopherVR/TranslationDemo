@@ -1,0 +1,110 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+  # Maintain dependencies for .NET projects (AuthenticationService)
+  - package-ecosystem: 'nuget'
+    directory: '/Services/Authentication/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+  # Maintain dependencies for .NET projects (User.Domain)
+  - package-ecosystem: 'nuget'
+    directory: '/Services/User/User.Domain/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+  # Maintain dependencies for .NET projects (User.Infrastructure)
+  - package-ecosystem: 'nuget'
+    directory: '/Services/User/User.Infrastructure/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+  # Maintain dependencies for .NET projects (TranslationDemo)
+  - package-ecosystem: 'nuget'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (API.Extensions)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Common/API.Extensions/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (Infrastructure.Extensions)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Common/Infrastructure.Extensions/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (Domain.Extensions)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Common/Domain.Extensions/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (Translation.API.Engine)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Translation/Translation.API.Engine/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (Translation.Common)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Translation/Translation.Common/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (Translation.Domain.Engine)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Translation/Translation.Domain.Engine/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (Translation.Infrastructure.Engine)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Translation/Translation.Infrastructure.Engine/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'
+
+    # Maintain dependencies for .NET projects (TranslationEngine)
+  - package-ecosystem: 'nuget'
+    directory: '/Libraries/Translation/TranslationEngine/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'ChristopherVR'

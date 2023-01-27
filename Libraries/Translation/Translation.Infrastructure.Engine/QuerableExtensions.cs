@@ -1,3 +1,5 @@
+﻿
+using System.Linq.Expressions;
 
 public static class QueryableExtensions
 {
@@ -5,12 +7,13 @@ public static class QueryableExtensions
     {
         var sourceType = source.ElementType;
         var resultType = typeof(TResult);
- 
+
         var parameter = Expression.Parameter(sourceType, "e");
- 
+
         var bindings = columns.Select(column =>
         {
-            return Expression.Bind(resultType.GetProperty(column), Expression.PropertyOrField(parameter, specificProp.Name));
+            var specificProp = resultType.GetProperty(column)!;
+            return Expression.Bind(specificProp, Expression.PropertyOrField(parameter, specificProp.Name));
         });
         var body = Expression.MemberInit(Expression.New(resultType), bindings);
         var selector = Expression.Lambda(body, parameter);

@@ -8,8 +8,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Translation.Common\Translation.Common.csproj" />
 		<ProjectReference Include="..\..\Common\Domain.Extensions\Domain.Extensions.csproj" />
+		<ProjectReference Include="..\Translation.Common\Translation.Common.csproj" />
 	</ItemGroup>
 	
 </Project>
