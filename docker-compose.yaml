@@ -1,0 +1,8 @@
+name: translation-demo
+
+services:
+  user:
+    image: ${DOCKER_REGISTRY}user:${TAG}
+    build:
+      context: .
+      dockerfile: Services/User/User.API/Dockerfile
